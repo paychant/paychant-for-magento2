@@ -148,7 +148,7 @@ class PaymentMethod extends AbstractMethod
 			'success_url' => $orderUrl,
 			'callback_url' => $noticeUrl,
 			'token' => $txnid,
-			'plugin' => 'WORDPRESS',
+			'plugin' => 'MAGENTO2',
 		);
 		
 		if($this->getConfigData('sandbox'))
