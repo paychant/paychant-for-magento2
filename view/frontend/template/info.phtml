@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © 2017 Storeplugins. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Storeplugins\Paychant\Block\Info
+ */
+?>
+<dl class="payment-method storepluginspaychant">
+    <dt class="title"><?php echo $block->escapeHtml($block->getMethod()->getTitle()) ?></dt>
+    <dd class="content">
+        <strong><?php echo $block->escapeHtml(__('You will be redirected to our secure payment page when you place an order.')) ?></strong>
+    </dd>
+</dl>

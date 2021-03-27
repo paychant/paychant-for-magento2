@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <storepluginspaychant>
+                <active>0</active>
+                <sandbox>0</sandbox>
+                <model>Storeplugins\Paychant\Model\PaymentMethod</model>
+                <new_order_status>pending</new_order_status>
+                <complete_order_status>complete</complete_order_status>
+                <cancel_order_status>canceled</cancel_order_status>
+                <invoice>0</invoice>
+                <title>Checkout via Paychant</title>
+                <payment_action>authorize</payment_action>
+                <allowspecific>0</allowspecific>
+                <min_order_total>1</min_order_total>
+                <max_order_total></max_order_total>
+                <currencies>NGN</currencies>
+                <can_use_internal>1</can_use_internal>
+            </storepluginspaychant>
+        </payment>
+    </default>
+</config>

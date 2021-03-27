@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 J2T Design All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config/etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="storepluginspaychant" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Paychant</label>
+                <comment>
+                    <![CDATA[In order to use this payment method, it is necessary to obtain merchant details from <a target='_blank' href='https://www.paychant.com'>PayChant</a>]]>
+                </comment>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[
+                        <script type="text/javascript">
+                            hideAll = function(){
+                                //groups[storepluginspaychant][fields][private_key][value]
+                                jQuery('textarea[data-ui-id="textarea-groups-storepluginspaychant-fields-private-key-value"]').closest('tr').hide();
+                                jQuery('textarea[data-ui-id="textarea-groups-storepluginspaychant-fields-public-key-value"]').closest('tr').hide();
+                                jQuery('textarea[data-ui-id="textarea-groups-storepluginspaychant-fields-invoice-value"]').closest('tr').hide();
+                                jQuery('input[data-ui-id="text-groups-storepluginspaychant-fields-module-url-value"]').closest('tr').hide();
+                              //  jQuery('input[data-ui-id="text-groups-storepluginspaychant-fields-min-amount-value"]').closest('tr').hide();
+                              //  jQuery('input[data-ui-id="text-groups-storepluginspaychant-fields-max-amount-value"]').closest('tr').hide();
+                              //  jQuery('input[data-ui-id="text-groups-storepluginspaychant-fields-currencies-value"]').closest('tr').hide();
+                            };
+
+
+                            setTimeout(function(){ hideAll(); }, 1000);
+
+                            jQuery( document ).ready(function() {
+                                hideAll();
+                            });
+                        </script>
+                    ]]></comment>
+                </field>
+                <field id="sandbox" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sandbox (Test)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+
+                <field id="title" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+
+                <!--<field id="account_details" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Account Details</label>
+                    <frontend_model>Storeplugins\Paychant\Block\Adminhtml\System\Config\Accountdetails</frontend_model>
+                </field>-->
+                <field id="live_api_key" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Live API token</label>
+                    <comment>Get you Live API token from your Paychant Merchant Dashboard.</comment>
+					<validate>required-entry</validate>
+                </field>
+                <field id="test_api_key" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sandbox API token</label>
+                    <comment>This is for testing only, it should not be used whe you are ready to accept real payment.</comment>
+					<validate>required-entry</validate>
+                </field>
+                <field id="min_amount" translate="label comment" type="text" sortOrder="125" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Min Amount</label>
+                    <comment>This payment gateway would not be available if the total amount in cart is lesser than this amount</comment>
+                    <validate>validate-zero-or-greater</validate>
+                </field>
+                <field id="max_amount" translate="label comment" type="text" sortOrder="126" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Max Amount</label>
+                    <comment>This payment gateway would not be available if the total in cart is greater than this amount</comment>
+                    <validate>required-entry validate-greater-than-zero</validate>
+                </field>
+                <!--<field id="currencies" translate="label" type="multiselect" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Supported Currencies</label>
+                    <source_model>Magento\Config\Model\Config\Source\Locale\Currency</source_model>
+                    <comment>Select the currencies that Paychant supports. Default Nigerian Naira (NGN)</comment>
+                </field>-->
+
+                <field id="new_order_status" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>New Order Status</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                    <!--<config_path>payment/storepluginspaychant/new_order_status</config_path>-->
+                </field>
+                <field id="complete_order_status" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Approved Order Status</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                    <!--<config_path>payment/storepluginspaychant/complete_order_status</config_path>-->
+                </field>
+                <field id="cancel_order_status" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Rejected Order Status</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                </field>
+                <!--<field id="invoice" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Invoice When Complete</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>-->
+                <!--<field id="allowspecific" translate="label" type="allowspecific" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>-->
+                <field id="instructions" translate="label" type="editor" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instructions</label>
+                    <comment>Instruction to show to the customer on the checkout page</comment>
+					<frontend_model>Storeplugins\Paychant\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
