@@ -1,6 +1,3 @@
-![Paychant integrations](https://paychant.com/images/svg/p_paychant_green.svg)
-
-
 # Paychant for Magento 2.3
 
 Accept Celo dollar, Bitcoin, Ethereum, Tether and other cryptocurrencies directly on your store with the Paychant payment 
